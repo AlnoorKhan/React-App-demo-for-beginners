@@ -18,7 +18,7 @@ function SelectLanguage(props){
             return (
                    <li
                      style={lang === props.selectedLanguage ? {color : '#d0021b'} : null}
-                     onClick={props.onSelect.bind(null,lang)} 
+                     onClick={props.onClick.bind(null,lang)} 
                      key={lang}>
                      {lang}
                    </li>
@@ -62,7 +62,7 @@ RepoGrid.propTypes = {
 
 SelectLanguage.propTypes = {
  selectedLanguage:PropTypes.string.isRequired,
- onSelect : PropTypes.func.isRequired,
+ onClick : PropTypes.func.isRequired,
 }
 
 
@@ -108,7 +108,7 @@ updateLanguage(lang){
         <div>
           <SelectLanguage 
             selectedLanguage={this.state.selectedLanguage}
-            onSelect={this.updateLanguage}
+            onClick={this.updateLanguage}
           />
           {!this.state.repos 
             ? <p>Loading </p>
