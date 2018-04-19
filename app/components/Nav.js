@@ -1,5 +1,4 @@
 var React = require('react');
-var Link = require('react-router-dom').Link;
 var NavLink = require('react-router-dom').Link;
 function Nav(){
   return (
@@ -16,7 +15,7 @@ function Nav(){
   			</li>
   			<li>
   				<NavLink activeClassName='active' to='/popular'>
-  					popular
+  					Popular
   				</NavLink>
   			</li>
   		</ul>
