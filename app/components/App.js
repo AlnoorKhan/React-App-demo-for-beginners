@@ -18,13 +18,13 @@ var Results = require('./Results');
 //UI 
 class App extends React.Component{
  render(){
- 	return ( 
+ 	return (
  		<Router>
  		<div className = 'container'>
  			<Nav />
  			<Switch>
 	 			<Route exact path="/" component={Home} />
-	 			<Route path="/battle" component={Battle} />
+	 			<Route exact path="/battle" component={Battle} />
 	 			<Route path="/battle/results" component={Results} />
 	 			<Route path="/popular" component={Popular} />
  				<Route render={function(){ return <p>Not Found</p> }} />
