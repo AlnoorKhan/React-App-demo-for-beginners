@@ -4,12 +4,38 @@ var queryString = require('query-string');
 var api = require('../utils/api');
 var Link = require('react-router-dom').Link;
 var PlayerPreview = require('./PlayerPreview');
+var Loading = require('./Loading');
+
+
+function Profile(props){
+	var info = props.info;
+	return (
+		<PlayerPreview avatar={info.avatar_url} username={info.login} >
+			<ul className='space-list-items'>
+				{info.name && <li>{info.name}</li>}
+				{info.location && <li>{info.location}</li>}
+				{info.company && <li>{info.company}</li>}
+				<li>Followers : {info.followers}</li>
+				<li>Following : {info.following}</li>
+				<li>Public Repos : {info.public_repos}</li>
+				{info.blog && <li><a href={info.blog}>{info.blog}</a></li>}
+			</ul>
+		</PlayerPreview>
+	)
+}
+
+
+Profile.propTypes = {
+	info : PropTypes.object.isRequired,
+}
+
 
 function Player(props){
 	return (
 		<div>
 			<h1 className='header'>{props.label}</h1>
 			<h3 style={{textAlign : 'center'}}>Score : {props.score}</h3>
+			<Profile info={props.profile} />
 		</div>
 	)
 }
@@ -63,8 +89,8 @@ class Results extends React.Component{
 		var loser = this.state.loser;
 		var loading = this.state.loading;
 
-		if(location === true){
-			return <p>Loading</p>
+		if(loading === true){
+			return <Loading />
 		}
 
 		if(error){

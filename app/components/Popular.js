@@ -1,13 +1,8 @@
 var React = require('react');
 var PropTypes = require('prop-types');
 var api = require('../utils/api');
+var Loading = require('./Loading');
 
-
-//state
-
-//lifecycle event
-
-//UI
 
 
 function SelectLanguage(props){
@@ -111,7 +106,7 @@ updateLanguage(lang){
             onClick={this.updateLanguage}
           />
           {!this.state.repos 
-            ? <p>Loading </p>
+            ? <Loading />
             : <RepoGrid repos={this.state.repos} />
           }
         </div>
